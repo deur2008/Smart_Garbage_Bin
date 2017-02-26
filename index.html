@@ -91,7 +91,7 @@ boardReady({device: 'Llbd'}, function (board) {
   ultrasonic = getUltrasonic(board, 11, 10);
   ultrasonic.ping(function(cm){
     console.log(ultrasonic.distance);
-tired.toggle();
+
 	 document.getElementById("soundTEST").innerHTML = ultrasonic.distance;
 	 	var A =  Math.round(((1-(document.getElementById("soundTEST").innerHTML/14))*100));
 		if( A < 0 ) A = 0;
@@ -146,7 +146,13 @@ tired.toggle();
                                                       url: "https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/16832171_1274293779315984_4497160339647275274_n.jpg?oh=051c27d475c8685710c387a703d47ae3&oe=593C970B", // url
                                                       scaledSize: new google.maps.Size(25, 25), // scaled size
                                                       };
-	
+	 setInterval(function(){
+                if (tired.getVisible()) {
+                    tired.setVisible(false);
+                } else {
+                    tired.setVisible(true);
+                }
+            }, 200);
 			
 
             setInterval(function(){
